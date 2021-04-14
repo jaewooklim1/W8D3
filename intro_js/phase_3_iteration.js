@@ -43,9 +43,10 @@ Array.prototype.substrings = function() {
   let substrings = [];
 
   for(let i = 0; i < this.length; i++) {
-    for(let j = 0; j < this.length; j++) {
-      substrings.push(this.slice(i,j+1))
+    for(let j = i + 1; j < this.length + 1; j++) {
+      substrings.push(this.slice(i,j))
     }
   }
   return substrings;
 }
+
