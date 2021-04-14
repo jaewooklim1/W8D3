@@ -56,3 +56,35 @@ function fibonacci(n) {
 }
 
 
+function deepDup(arr) {
+    const newArray = [];
+
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] instanceof Array) {
+            newArray.push(deepDup(arr[i]));
+        } else {
+            newArray.push(arr[i]);
+        }    
+    }     
+    
+    return newArray;
+}
+
+function bsearch(arr, target) {
+    if (arr.length < 1) {
+        return -1;
+    }
+
+    const index = Math.floor((arr.length / 2));
+    const mid = arr[index];
+    
+    if (mid === target) {
+        return index;
+    } else if (target < mid) {
+        return bsearch(arr.slice(0, index), target);
+    } else {
+        const found = bsearch(arr.slice(index+1), target);
+        return (found === -1 ? -1 : found + index + 1);
+    }
+
+}
